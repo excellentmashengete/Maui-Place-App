@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:KlipboardPlace.App.Controls"
+             x:Class="KlipboardPlace.App.Views.PlaceDetailsPage"
+             x:Name="Page"
+             Title="Place Details">
+
+    <Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+
+        <Label Text="{Binding ErrorMessage}"
+               IsVisible="{Binding HasError}"
+               TextColor="Red"
+               Padding="16"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <ScrollView IsVisible="{Binding IsNotBusy}">
+            <VerticalStackLayout Padding="20" Spacing="18"
+                                 BindingContext="{Binding Details}">
+
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="Name" />
+                    <controls:TextTitle Text="{Binding Name}" />
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="Formatted Address" />
+                    <controls:TextTitle Text="{Binding FormattedAddress}" />
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="Vicinity" />
+                    <controls:TextTitle Text="{Binding Vicinity}" />
+                </VerticalStackLayout>
+            
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="Url"  />
+                <!-- Special-cased: a tappable, underlined link rather than a plain value. -->
+                    <controls:TextTitle Text="{Binding Url}" TextDecorations="Underline" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.OpenUrlCommand, Source={x:Reference Page}}" />
+                        </Label.GestureRecognizers>
+                    </controls:TextTitle>
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="Latitude / Longitude"  />
+                    <controls:TextTitle Text="{Binding BindingContext.Coordinates, Source={x:Reference Page}}" />
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Spacing="5">
+                    <controls:TextBody Text="UTC Offset (minutes)" />
+                    <controls:TextTitle Text="{Binding UtcOffset}" />
+                </VerticalStackLayout>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

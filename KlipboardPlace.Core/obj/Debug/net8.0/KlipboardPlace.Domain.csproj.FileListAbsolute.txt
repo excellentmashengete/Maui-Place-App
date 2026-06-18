@@ -1,0 +1,12 @@
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/bin/Debug/net8.0/KlipboardPlace.Domain.deps.json
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/bin/Debug/net8.0/KlipboardPlace.Domain.dll
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/bin/Debug/net8.0/KlipboardPlace.Domain.pdb
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.csproj.AssemblyReference.cache
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.AssemblyInfoInputs.cache
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.AssemblyInfo.cs
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.csproj.CoreCompileInputs.cache
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.dll
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/refint/KlipboardPlace.Domain.dll
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/KlipboardPlace.Domain.pdb
+/Users/excellentmashengete/Personal/KlipboardPlace/KlipboardPlace.Domain/obj/Debug/net8.0/ref/KlipboardPlace.Domain.dll

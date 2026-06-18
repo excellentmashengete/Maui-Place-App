@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:constants="clr-namespace:KlipboardPlace.App.Constants"
+    x:Class="KlipboardPlace.App.Views.SearchPage"
+    x:Name="Page"
+    Shell.NavBarIsVisible="False"
+    Title="Search Places">
+
+    <Grid Padding="24">
+
+        <!-- Search Panel -->
+        <VerticalStackLayout
+            x:Name="SearchPanel"
+            VerticalOptions="Center"
+            Spacing="16">
+
+            <VerticalStackLayout.Triggers>
+                <DataTrigger
+                    TargetType="VerticalStackLayout"
+                    Binding="{Binding HasInput}"
+                    Value="True">
+                    <Setter Property="VerticalOptions"
+                            Value="Start" />
+                </DataTrigger>
+            </VerticalStackLayout.Triggers>
+
+            <Label
+                x:Name="TitleLabel"
+                Text="Search Places"
+                FontSize="30"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center">
+                <Label.Triggers>
+                    <DataTrigger
+                        TargetType="Label"
+                        Binding="{Binding HasInput}"
+                        Value="True">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="HorizontalOptions" Value="Start" />
+                        <Setter Property="HorizontalTextAlignment" Value="Start" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Entry
+                x:Name="SearchEntry"
+                Placeholder="Search for a place..."
+                Text="{Binding Criteria, Mode=TwoWay}"
+                ClearButtonVisibility="WhileEditing" />
+
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding ErrorMessage}"
+                IsVisible="{Binding HasError}"
+                TextColor="Red"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <!-- Results -->
+        <Grid
+            x:Name="ResultsArea"
+            IsVisible="{Binding HasInput}"
+            Margin="0,120,0,0">
+
+            <CollectionView
+                ItemsSource="{Binding Places}"
+                SelectionMode="None"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsUpdatingScrollMode="KeepScrollOffset">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid
+                            Padding="4,10"
+                            RowDefinitions="Auto,Auto"
+                            RowSpacing="2">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.SelectPlaceCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+
+                            <Label
+                                Grid.Row="0"
+                                Text="{Binding MainText}"
+                                FontSize="16"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding SecondaryText}"
+                                FontSize="13"
+                                TextColor="Gray" />
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label
+                Text="{x:Static constants:AppMessages.NoPlacesFound}"
+                IsVisible="{Binding ShowEmptyState}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="Gray"
+                HorizontalTextAlignment="Center" />
+
+        </Grid>
+    </Grid>
+</ContentPage>
